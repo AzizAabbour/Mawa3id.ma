@@ -1,0 +1,36 @@
+{
+  "app_name": "Mawa3id.ma",
+  "tagline": "Ne ratez plus aucun rendez-vous.",
+  "subtitle": "La solution SaaS marocaine conçue pour les salons, cliniques et professionnels. Gérez vos rendez-vous et envoyez automatiquement des rappels WhatsApp et SMS à vos clients.",
+  "start_free": "Commencer gratuitement",
+  "see_demo": "Voir la démo en direct",
+  "nav_features": "Fonctionnalités",
+  "nav_whatsapp": "WhatsApp Automatique",
+  "nav_pricing": "Tarifs",
+  "nav_faq": "FAQ",
+  "nav_login": "Se connecter",
+  "nav_register": "Créer mon compte",
+  "currency": "DH",
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bonjour {{name}} 👋",
+    "today_appointments": "Rendez-vous aujourd'hui",
+    "completed": "Terminés",
+    "no_shows": "Absences (No-shows)",
+    "revenue": "Chiffre d'affaires estimé",
+    "total_customers": "Clients enregistrés",
+    "whatsapp_sent": "Rappels WhatsApp",
+    "delivery_rate": "Taux de délivrabilité",
+    "view_all": "Voir tout"
+  },
+  "booking": {
+    "select_service": "1. Choisissez une prestation",
+    "select_employee": "2. Choisissez un collaborateur",
+    "select_date_time": "3. Date & Créneau horaire",
+    "your_info": "4. Vos coordonnées",
+    "confirmation": "Confirmation",
+    "confirm_button": "Confirmer mon rendez-vous",
+    "success_title": "Rendez-vous confirmé avec succès !",
+    "success_subtitle": "Un message de confirmation vous a été envoyé par WhatsApp."
+  }
+}

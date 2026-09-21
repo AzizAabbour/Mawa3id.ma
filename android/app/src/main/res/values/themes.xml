@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Mawaid" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/moroccan_green</item>
+        <item name="colorSecondary">@color/moroccan_gold</item>
+        <item name="android:statusBarColor">@color/moroccan_green</item>
+    </style>
+</resources>

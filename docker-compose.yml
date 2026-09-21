@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  # ========================================
+  # PostgreSQL Database
+  # ========================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: mawa3id_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME:-mawa3id}
+      POSTGRES_USER: ${DATABASE_USERNAME:-mawa3id}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-mawa3id_secret_pwd}
+    ports:
+      - "${DATABASE_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME:-mawa3id} -d ${DATABASE_NAME:-mawa3id}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================================
+  # Redis Cache & Session
+  # ========================================
+  redis:
+    image: redis:7-alpine
+    container_name: mawa3id_redis
+    restart: always
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================================
+  # RabbitMQ Message Broker
+  # ========================================
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: mawa3id_rabbitmq
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME:-mawa3id}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-mawa3id_rabbit_pwd}
+    ports:
+      - "${RABBITMQ_PORT:-5672}:5672"
+      - "${RABBITMQ_MANAGEMENT_PORT:-15672}:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================================
+  # Spring Boot REST API
+  # ========================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mawa3id_backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/${DATABASE_NAME:-mawa3id}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:-mawa3id}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-mawa3id_secret_pwd}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USERNAME: ${RABBITMQ_USERNAME:-mawa3id}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD:-mawa3id_rabbit_pwd}
+      JWT_SECRET: ${JWT_SECRET:-dGVzdC1zZWNyZXQta2V5LW1hd2EzaWQtbW9yb2Njb2FwcC1wcm9kdWN0aW9uLXJlYWR5LTI1NmJpdHM=}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://localhost:3000}
+    ports:
+      - "${SERVER_PORT:-8080}:8080"
+
+volumes:
+  postgres_data:
+  redis_data:
+  rabbitmq_data:

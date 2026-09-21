@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mawa3id.ma</string>
+    <string name="login_title">Connexion Mawa3id.ma</string>
+    <string name="login_subtitle">Gérez vos rendez-vous et vos rappels WhatsApp</string>
+    <string name="email_hint">Adresse email</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="btn_login">Se connecter</string>
+    <string name="dashboard_title">Tableau de bord</string>
+</resources>

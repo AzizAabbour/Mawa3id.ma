@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="moroccan_green">#1B5E3C</color>
+    <color name="moroccan_green_dark">#14492E</color>
+    <color name="moroccan_gold">#C5982E</color>
+    <color name="moroccan_sand">#EFE8DA</color>
+    <color name="moroccan_terracotta">#C75B39</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="bg_offwhite">#FAF8F5</color>
+    <color name="text_charcoal">#1C2420</color>
+    <color name="text_muted">#5E6D66</color>
+</resources>

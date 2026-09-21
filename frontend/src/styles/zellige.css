@@ -1,0 +1,54 @@
+/* ========================================================
+   Subtle Moroccan Zellige & Geometric Tile Patterns
+   ======================================================== */
+
+/* Elegant 8-pointed star Moroccan Zellige geometric background */
+.zellige-bg {
+  background-color: var(--color-bg);
+  background-image: radial-gradient(var(--color-primary-glow) 1px, transparent 1px),
+                    radial-gradient(var(--color-primary-glow) 1px, var(--color-bg) 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Subtle Zellige geometric watermark banner */
+.zellige-pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+.zellige-pattern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.06;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231B5E3C' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M30 0l30 30-30 30L0 30zM30 10l20 20-20 20-20-20z'/%3E%3Ccircle cx='30' cy='30' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 40px 40px;
+}
+
+/* Dark Green Zellige for hero & headers */
+.zellige-hero {
+  background-color: var(--color-primary);
+  background-image: radial-gradient(rgba(197, 152, 46, 0.2) 1.5px, transparent 1.5px),
+                    radial-gradient(rgba(197, 152, 46, 0.1) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  color: #FFFFFF;
+}
+
+/* Moroccan Arch Header Accent */
+.moroccan-arch-top {
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+/* Moroccan Gold Border Accent */
+.gold-border-accent {
+  border-bottom: 2px solid var(--color-gold);
+}
